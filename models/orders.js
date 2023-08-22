@@ -22,11 +22,15 @@ const schema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  status: {
+    type: Boolean,
+    default: false
+  },
   cart: {
     type: [cartSchema],
     default: [],
     validate: {
-      validator(value) {
+      validator (value) {
         return Array.isArray(value) && value.length > 0
       },
       message: '購物車不能為空'
